@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navItems = [
-    { name: 'Willkommen', page: 'Home' },
+    { name: 'Home', page: 'Home' },
     { name: 'Leistungen', page: 'Leistungen' },
     { name: 'Kontakt', page: 'Kontakt' },
     { name: 'Impressum', page: 'Impressum' }
@@ -23,36 +33,59 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Top Bar */}
+      <div className="bg-gray-900 text-white py-2 hidden md:block">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="flex justify-between items-center text-sm">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-red-500" />
+                <span>Wulften</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-red-500" />
+                <span>Über Kontaktformular</span>
+              </div>
+            </div>
+            <div className="text-gray-400">
+              Malermeister seit Jahren in der Region
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+      <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-lg' : 'bg-white'
+      }`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="shrink-0">
               <img 
-                src="http://www.haarmann-wulften.de/mediapool/130/1304105/resources/slogan_3003_10_0.png"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983d5a632c8461b2cc2ab91/c6dc16d2e_malermeister.jpg"
                 alt="Haarmann Malermeister"
-                className="h-12 w-auto"
+                className="h-16 w-auto"
               />
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-10">
               {navItems.map((item) => (
                 <Link
                   key={item.page}
                   to={createPageUrl(item.page)}
-                  className={`text-sm font-medium transition-colors duration-200 relative py-2 ${
+                  className={`text-base font-medium transition-all duration-200 relative ${
                     isActive(item.page) 
-                      ? 'text-[#C41E3A]' 
-                      : 'text-gray-600 hover:text-gray-900'
+                      ? 'text-red-600' 
+                      : 'text-gray-700 hover:text-red-600'
                   }`}
                 >
                   {item.name}
                   {isActive(item.page) && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#C41E3A]"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-red-600"
                     />
                   )}
                 </Link>
@@ -60,22 +93,23 @@ export default function Layout({ children }) {
             </div>
 
             {/* CTA Button */}
-            <div className="hidden md:block">
-              <Link
-                to={createPageUrl('Kontakt')}
-                className="inline-flex items-center gap-2 bg-[#C41E3A] text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#a01830] transition-colors duration-200"
-              >
-                <Phone className="w-4 h-4" />
-                Angebot anfragen
+            <div className="hidden lg:block">
+              <Link to={createPageUrl('Kontakt')}>
+                <Button 
+                  className="bg-red-600 hover:bg-red-700 text-white h-12 px-6 font-medium"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  Jetzt anfragen
+                </Button>
               </Link>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-600"
+              className="lg:hidden p-2 text-gray-700 hover:text-red-600 transition-colors"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
             </button>
           </div>
         </div>
@@ -87,18 +121,18 @@ export default function Layout({ children }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-gray-100"
+              className="lg:hidden bg-white border-t border-gray-100"
             >
-              <div className="px-6 py-4 space-y-1">
+              <div className="px-6 py-6 space-y-2">
                 {navItems.map((item) => (
                   <Link
                     key={item.page}
                     to={createPageUrl(item.page)}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`block py-3 px-4 rounded-lg text-base font-medium transition-colors ${
+                    className={`block py-3 px-4 rounded-xl text-base font-medium transition-colors ${
                       isActive(item.page)
-                        ? 'bg-[#C41E3A]/10 text-[#C41E3A]'
-                        : 'text-gray-600 hover:bg-gray-50'
+                        ? 'bg-red-50 text-red-600'
+                        : 'text-gray-700 hover:bg-gray-50'
                     }`}
                   >
                     {item.name}
@@ -108,10 +142,11 @@ export default function Layout({ children }) {
                   <Link
                     to={createPageUrl('Kontakt')}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full bg-[#C41E3A] text-white py-3 rounded-full font-medium"
                   >
-                    <Phone className="w-4 h-4" />
-                    Angebot anfragen
+                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white h-12">
+                      <Phone className="w-4 h-4 mr-2" />
+                      Jetzt anfragen
+                    </Button>
                   </Link>
                 </div>
               </div>
@@ -121,36 +156,36 @@ export default function Layout({ children }) {
       </nav>
 
       {/* Main Content */}
-      <main className="pt-20">
+      <main>
         {children}
       </main>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-          <div className="grid md:grid-cols-3 gap-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             {/* Logo & Description */}
-            <div>
+            <div className="md:col-span-2">
               <img 
-                src="http://www.haarmann-wulften.de/mediapool/130/1304105/resources/slogan_3003_10_0.png"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983d5a632c8461b2cc2ab91/c6dc16d2e_malermeister.jpg"
                 alt="Haarmann Malermeister"
-                className="h-16 w-auto brightness-0 invert mb-4"
+                className="h-20 w-auto mb-6 brightness-0 invert"
               />
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-400 leading-relaxed max-w-md">
                 Ihr freundlicher und kompetenter Ansprechpartner für alle Bereiche 
-                im Maler- und Lackiererhandwerk.
+                im Maler- und Lackiererhandwerk. Wir beraten Sie gern und umfassend!
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h3 className="font-medium text-lg mb-4">Navigation</h3>
-              <ul className="space-y-2">
+              <h3 className="font-bold text-lg mb-6">Navigation</h3>
+              <ul className="space-y-3">
                 {navItems.map((item) => (
                   <li key={item.page}>
                     <Link
                       to={createPageUrl(item.page)}
-                      className="text-gray-400 hover:text-white transition-colors text-sm"
+                      className="text-gray-400 hover:text-white transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -161,32 +196,36 @@ export default function Layout({ children }) {
 
             {/* Contact */}
             <div>
-              <h3 className="font-medium text-lg mb-4">Kontakt</h3>
-              <div className="text-gray-400 text-sm space-y-2">
-                <p>Firma Klaus Haarmann</p>
-                <p>Malermeister</p>
-                <p>Wulften</p>
-                <p className="pt-2">
+              <h3 className="font-bold text-lg mb-6">Kontakt</h3>
+              <div className="text-gray-400 space-y-3">
+                <div>
+                  <p className="font-medium text-white">Firma Klaus Haarmann</p>
+                  <p>Malermeister</p>
+                  <p>Wulften</p>
+                </div>
+                <div className="pt-2">
                   <Link 
                     to={createPageUrl('Kontakt')} 
-                    className="text-[#C41E3A] hover:underline"
+                    className="inline-flex items-center text-red-500 hover:text-red-400 transition-colors font-medium"
                   >
-                    → Kontaktformular
+                    <Mail className="w-4 h-4 mr-2" />
+                    Kontaktformular
                   </Link>
-                </p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
               © {new Date().getFullYear()} Haarmann Malermeister. Alle Rechte vorbehalten.
             </p>
-            <div className="flex gap-6">
-              <Link to={createPageUrl('Impressum')} className="text-gray-500 hover:text-white text-sm transition-colors">
-                Impressum
-              </Link>
-            </div>
+            <Link 
+              to={createPageUrl('Impressum')} 
+              className="text-gray-500 hover:text-white text-sm transition-colors"
+            >
+              Impressum & Datenschutz
+            </Link>
           </div>
         </div>
       </footer>
