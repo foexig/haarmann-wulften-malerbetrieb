@@ -67,16 +67,6 @@ export default function Home() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <a href="tel:">
-                  <Button 
-                    variant="outline"
-                    size="lg"
-                    className="border-2 border-gray-300 hover:bg-gray-50 px-8 h-14 text-lg font-medium"
-                  >
-                    <Phone className="mr-2 h-5 w-5" />
-                    Anrufen
-                  </Button>
-                </a>
               </div>
 
               <div className="flex items-center gap-8 mt-12 pt-8 border-t border-gray-200">
@@ -292,16 +282,6 @@ export default function Home() {
                   Nachricht senden
                 </Button>
               </Link>
-              <a href="tel:">
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white text-white hover:bg-white/10 h-14 px-10 text-lg font-semibold"
-                >
-                  <Phone className="mr-2 h-5 w-5" />
-                  Jetzt anrufen
-                </Button>
-              </a>
             </div>
           </motion.div>
         </div>
