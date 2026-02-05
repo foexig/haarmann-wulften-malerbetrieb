@@ -98,7 +98,7 @@ export default function Kontakt() {
                     <div>
                       <div className="font-semibold text-gray-900 mb-1">E-Mail</div>
                       <div className="text-gray-600">
-                        Nutzen Sie unser Kontaktformular
+                        info@haarmann-wulften.de
                       </div>
                     </div>
                   </div>
