@@ -98,7 +98,6 @@ export default function Layout({ children }) {
                 <Button 
                   className="bg-red-600 hover:bg-red-700 text-white h-12 px-6 font-medium"
                 >
-                  <Phone className="w-4 h-4 mr-2" />
                   Jetzt anfragen
                 </Button>
               </Link>
