@@ -94,7 +94,7 @@ export default function Layout({ children }) {
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <Link to={createPageUrl('Kontakt')}>
+              <Link to={createPageUrl('Kontakt') + '#kontaktformular'}>
                 <Button 
                   className="bg-red-600 hover:bg-red-700 text-white h-12 px-6 font-medium"
                 >
@@ -139,11 +139,10 @@ export default function Layout({ children }) {
                 ))}
                 <div className="pt-4">
                   <Link
-                    to={createPageUrl('Kontakt')}
+                    to={createPageUrl('Kontakt') + '#kontaktformular'}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <Button className="w-full bg-red-600 hover:bg-red-700 text-white h-12">
-                      <Phone className="w-4 h-4 mr-2" />
                       Jetzt anfragen
                     </Button>
                   </Link>
@@ -204,7 +203,7 @@ export default function Layout({ children }) {
                 </div>
                 <div className="pt-2">
                   <Link 
-                    to={createPageUrl('Kontakt')} 
+                    to={createPageUrl('Kontakt') + '#kontaktformular'} 
                     className="inline-flex items-center text-red-500 hover:text-red-400 transition-colors font-medium"
                   >
                     <Mail className="w-4 h-4 mr-2" />

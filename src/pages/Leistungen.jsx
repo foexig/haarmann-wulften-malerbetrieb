@@ -163,7 +163,7 @@ export default function Leistungen() {
             </div>
 
             <div className="mt-12">
-              <Link to={createPageUrl('Kontakt')}>
+              <Link to={createPageUrl('Kontakt') + '#kontaktformular'}>
                 <Button 
                   size="lg"
                   className="bg-red-600 hover:bg-red-700 h-14 px-10 text-lg"

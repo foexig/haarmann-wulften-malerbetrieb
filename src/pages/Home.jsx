@@ -58,7 +58,7 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to={createPageUrl('Kontakt')}>
+                <Link to={createPageUrl('Kontakt') + '#kontaktformular'}>
                   <Button 
                     size="lg"
                     className="bg-red-600 hover:bg-red-700 text-white px-8 h-14 text-lg font-medium"
@@ -209,7 +209,7 @@ export default function Home() {
               </p>
               
               <div className="flex gap-4">
-                <Link to={createPageUrl('Kontakt')}>
+                <Link to={createPageUrl('Kontakt') + '#kontaktformular'}>
                   <Button 
                     size="lg"
                     className="bg-red-600 hover:bg-red-700 h-14 px-8"
@@ -272,7 +272,7 @@ export default function Home() {
               Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und Angebot.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to={createPageUrl('Kontakt')}>
+              <Link to={createPageUrl('Kontakt') + '#kontaktformular'}>
                 <Button 
                   size="lg"
                   variant="secondary"

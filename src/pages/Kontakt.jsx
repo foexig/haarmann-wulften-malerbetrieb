@@ -46,7 +46,7 @@ export default function Kontakt() {
       </section>
 
       {/* Contact Content */}
-      <section className="py-24 bg-white">
+      <section id="kontaktformular" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-5 gap-16">
             {/* Contact Info */}
