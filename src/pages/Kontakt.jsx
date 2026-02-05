@@ -73,8 +73,7 @@ export default function Kontakt() {
                     <div>
                       <div className="font-semibold text-gray-900 mb-1">Adresse</div>
                       <div className="text-gray-600">
-                        <div>Firma Klaus Haarmann</div>
-                        <div>Wulften</div>
+                        <div>Malermeister Haarmann<br/ >Feldstraße 4<br/ >37199 Wulften</div>
                       </div>
                     </div>
                   </div>
