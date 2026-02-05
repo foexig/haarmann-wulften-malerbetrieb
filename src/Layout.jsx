@@ -18,6 +18,10 @@ export default function Layout({ children }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const navItems = [
     { name: 'Home', page: 'Home' },
     { name: 'Leistungen', page: 'Leistungen' },
