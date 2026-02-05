@@ -169,7 +169,7 @@ export default function Layout({ children }) {
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983d5a632c8461b2cc2ab91/c6dc16d2e_malermeister.jpg"
                 alt="Haarmann Malermeister"
-                className="h-20 w-auto mb-6 brightness-0 invert"
+                className="h-20 w-auto mb-6"
               />
               <p className="text-gray-400 leading-relaxed max-w-md">
                 Ihr freundlicher und kompetenter Ansprechpartner für alle Bereiche 
