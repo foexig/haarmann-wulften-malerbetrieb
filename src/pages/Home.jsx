@@ -103,7 +103,7 @@ export default function Home() {
             >
               <div className="relative z-10">
                 <img 
-                  src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80"
+                  src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80"
                   alt="Malerarbeiten"
                   className="rounded-3xl shadow-2xl"
                 />
