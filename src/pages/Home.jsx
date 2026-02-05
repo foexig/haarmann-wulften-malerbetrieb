@@ -17,13 +17,13 @@ export default function Home() {
       icon: HomeIcon,
       title: "Fassadenbeschichtung",
       description: "Wärmedämmung und Fassadensanierung",
-      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80"
+      image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983d5a632c8461b2cc2ab91/9be565892_fassade2.jpg"
     },
     {
       icon: Layers,
       title: "Fußbodenbeläge",
       description: "Teppich, PVC und Fertigparkett",
-      image: "https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=600&q=80"
+      image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6983d5a632c8461b2cc2ab91/a2182e240_pakett.jpg"
     }
   ];
 
