@@ -4,6 +4,7 @@ import { createPageUrl } from '@/utils';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import CookieConsent from '@/components/CookieConsent';
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -231,6 +232,8 @@ export default function Layout({ children }) {
           </div>
         </div>
       </footer>
-    </div>
-  );
-}
+
+      <CookieConsent />
+      </div>
+      );
+      }
