@@ -86,7 +86,7 @@ export default function Kontakt() {
                     <div>
                       <div className="font-semibold text-gray-900 mb-1">Telefon</div>
                       <div className="text-gray-600">
-                        Rufen Sie uns an für ein<br />kostenloses Angebot
+                        +49 5556 325 
                       </div>
                     </div>
                   </div>
