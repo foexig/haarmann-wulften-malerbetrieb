@@ -54,7 +54,7 @@ export default function Impressum() {
                 Kontakt
               </h2>
               <div className="text-gray-700">
-                <p>E-Mail: Über unser Kontaktformular</p>
+                <p>E-Mail: info@haarmann-wulften.de</p>
               </div>
             </div>
 
