@@ -1,11 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Paintbrush, Home as HomeIcon, Layers, Thermometer, Palette, Sparkles, CheckCircle, ArrowRight } from 'lucide-react';
+import { Paintbrush, Home as HomeIcon, Layers, Thermometer, Palette, Sparkles, CheckCircle, ArrowRight, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Leistungen() {
+  const [expandedIndex, setExpandedIndex] = useState(null);
   const services = [
     {
       icon: Palette,
