@@ -46,9 +46,6 @@ export default function Kontakt() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block bg-white/20 px-6 py-2 rounded-full text-sm font-semibold mb-6">
-              Kontaktieren Sie uns
-            </span>
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               Lassen Sie uns sprechen
             </h1>
