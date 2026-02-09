@@ -43,7 +43,7 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <div className="inline-block bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <div className="text-red-600 text-lg font-semibold mb-6">
                 Meisterbetrieb seit Jahren in Wulften
               </div>
               
