@@ -213,6 +213,7 @@ export default function Leistungen() {
                 </AnimatePresence>
               </motion.div>
               ))}
+            </div>
           </div>
         </div>
       </section>
