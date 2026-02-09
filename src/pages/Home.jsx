@@ -43,10 +43,6 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <div className="text-red-600 text-lg font-semibold mb-6">
-                Meisterbetrieb seit Jahren in Wulften
-              </div>
-              
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 leading-tight">
                 Farbe ist unsere
                 <span className="block text-red-600">Leidenschaft</span>
