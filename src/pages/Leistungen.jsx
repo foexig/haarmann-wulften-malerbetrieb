@@ -92,28 +92,59 @@ export default function Leistungen() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-gradient-to-br from-gray-50 to-white border-2 border-gray-100 rounded-3xl p-10 hover:shadow-2xl hover:border-gray-200 transition-all duration-500"
+                className="group relative bg-gradient-to-br from-gray-50 to-white border-2 border-gray-100 rounded-3xl overflow-hidden hover:shadow-2xl hover:border-gray-200 transition-all duration-500"
               >
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${service.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className="w-8 h-8 text-white" />
-                </div>
+                <button
+                  onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+                  className="w-full text-left p-10"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-4">
+                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${service.color} shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                        <service.icon className="w-8 h-8 text-white" />
+                      </div>
+                      
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">
+                          {service.title}
+                        </h3>
+                      </div>
+                    </div>
+                    
+                    <ChevronDown 
+                      className={`w-6 h-6 text-gray-400 shrink-0 transition-transform duration-300 ${
+                        expandedIndex === index ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </div>
+                </button>
                 
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {service.title}
-                </h3>
-                
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                
-                <ul className="space-y-3">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <AnimatePresence>
+                  {expandedIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-10 pb-10">
+                        <p className="text-gray-600 mb-6 leading-relaxed">
+                          {service.description}
+                        </p>
+                        
+                        <ul className="space-y-3">
+                          {service.features.map((feature) => (
+                            <li key={feature} className="flex items-start gap-3">
+                              <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                              <span className="text-gray-700">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>
