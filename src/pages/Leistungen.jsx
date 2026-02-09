@@ -84,8 +84,9 @@ export default function Leistungen() {
       {/* Services */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
-            {services.map((service, index) => (
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-8">
+              {services.filter((_, index) => index % 2 === 0).map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
